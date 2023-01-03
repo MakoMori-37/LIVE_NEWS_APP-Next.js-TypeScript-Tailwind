@@ -7,7 +7,8 @@ function index() {
     // return notFound()
     return <h1>Not found</h1>
   }
-  const article: Article = router.query;
+  const article: Article = router.query as Article;
+  
   return (
     <article>
       <section className="flex flex-col lg:flex-row pb-24 px-0 lg:px-10">
