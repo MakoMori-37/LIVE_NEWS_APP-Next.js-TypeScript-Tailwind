@@ -7,9 +7,7 @@ import response from "../../../response.json";
 function index() {
   const router = useRouter();
 
-  const category: string = router.query.category as string
-
-  if (!category) {
+  if (!router.query.category) {
     return <h1>Not found</h1>;
   }
 
@@ -18,7 +16,7 @@ function index() {
   const loadList = async () => {
     try {
       const data: NewsResponse =
-        (await fetchNewsByCategory(category)) || response;
+        (await fetchNewsByCategory(router.query.category as string)) || response;
       setNews(data);
     } catch (error) {
       console.log(error);
@@ -27,11 +25,11 @@ function index() {
 
   useEffect(() => {
     loadList();
-  }, [category]);
+  }, [router.query.category]);
 
   return (
     <div>
-      <h1 className="headerTitle mb-10">{category}</h1>
+      <h1 className="headerTitle mb-10">{router.query.category}</h1>
       <NewsList news={news} />
     </div>
   );
