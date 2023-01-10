@@ -1,6 +1,6 @@
 // import axios from "axios"
 import { businessData, entertainmentData, generalData, healthData, scienceData, sportsData, technologyData } from '../mockData'
-// import sortNewsByImage from "./sortNewsByImage"
+import sortNewsByImage from "./sortNewsByImage"
 
 const fetchNewsByCategory = async (category: string) => {
     try {
@@ -9,28 +9,36 @@ const fetchNewsByCategory = async (category: string) => {
         // return news
         switch (category) {
             case 'business':
-                return businessData
+                const business = sortNewsByImage(businessData)
+                return business
                 break;
             case 'entertainment':
-                return entertainmentData
+                const entertainment = sortNewsByImage(entertainmentData)
+                return entertainment
                 break;
             case 'general':
-                return generalData
+                const general = sortNewsByImage(generalData)
+                return general
                 break;
             case 'health':
-                return healthData
+                const health = sortNewsByImage(healthData)
+                return health
                 break;
             case 'science':
-                return scienceData
+                const science = sortNewsByImage(scienceData)
+                return science
                 break;
             case 'sports':
-                return sportsData
+                const sports = sortNewsByImage(sportsData)
+                return sports
                 break;
             case 'technology':
-                return technologyData
+                const technology = sortNewsByImage(technologyData)
+                return technology
                 break;
             default:
-                return generalData
+                const news = sortNewsByImage(generalData)
+                return news
                 break;
         }
     } catch (error) {
